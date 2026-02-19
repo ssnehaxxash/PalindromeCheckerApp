@@ -6,19 +6,21 @@ public class palindromeapp {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a word: ");
-        String word = sc.nextLine();
+        System.out.print("Enter a string: ");
+        String original = sc.nextLine();
 
-        String reverse = "";
+        String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reverse = reverse + word.charAt(i);
+        // Reverse the string using loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        if (word.equalsIgnoreCase(reverse)) {
-            System.out.println(word + " is a Palindrome");
+        // Compare original and reversed
+        if (original.equals(reversed)) {
+            System.out.println("It is a Palindrome.");
         } else {
-            System.out.println(word + " is NOT a Palindrome");
+            System.out.println("It is NOT a Palindrome.");
         }
 
         sc.close();
