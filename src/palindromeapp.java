@@ -10,21 +10,21 @@ public class palindromeapp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        // Create a stack
+        // Create a stack to store characters
         Stack<Character> stack = new Stack<>();
 
-        // Push all characters into the stack
+        // Push each character into the stack
         for (int i = 0; i < input.length(); i++) {
             stack.push(input.charAt(i));
         }
 
-        // Pop characters and build reversed string
+        // Pop characters to build the reversed string
         String reversed = "";
         while (!stack.isEmpty()) {
             reversed += stack.pop();
         }
 
-        // Compare original and reversed
+        // Compare original and reversed strings
         if (input.equals(reversed)) {
             System.out.println("It is a Palindrome.");
         } else {
