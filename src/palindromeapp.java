@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class palindromeapp {
 
@@ -10,22 +12,31 @@ public class palindromeapp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        // Create a stack to store characters
+        // Initialize stack (LIFO) and queue (FIFO)
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // Push each character into the stack
+        // Push/enqueue characters
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            char ch = input.charAt(i);
+            stack.push(ch);     // LIFO
+            queue.add(ch);      // FIFO
         }
 
-        // Pop characters to build the reversed string
-        String reversed = "";
+        // Compare stack.pop() vs queue.remove()
+        boolean isPalindrome = true;
         while (!stack.isEmpty()) {
-            reversed += stack.pop();
+            char fromStack = stack.pop();
+            char fromQueue = queue.remove();
+
+            if (fromStack != fromQueue) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // Compare original and reversed strings
-        if (input.equals(reversed)) {
+        // Display result
+        if (isPalindrome) {
             System.out.println("It is a Palindrome.");
         } else {
             System.out.println("It is NOT a Palindrome.");
